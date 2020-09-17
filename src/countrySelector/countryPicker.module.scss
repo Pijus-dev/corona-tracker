@@ -1,0 +1,15 @@
+.group {
+  width: 30%;
+  margin: 0px auto 0 auto;
+  text-align: center;
+
+  select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  @media screen and(max-width: 557px) {
+    width: 58%;
+  }
+}

@@ -1,0 +1,50 @@
+$sub-color: #455275;
+$main-color: rgb(212, 209, 209);
+
+.cards {
+  position: absolute;
+  top: 8%;
+  left: 4%;
+
+  @media screen and(max-width: 881px) {
+    position: unset;
+  }
+
+  .card {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    background-color: $sub-color;
+    margin-top: 10px;
+    padding: 20px 20px 0px 20px;
+
+    @media screen and(max-width: 1273px) {
+      width: 240px;
+    }
+
+    @media screen and(max-width: 881px) {
+      width: 450px;
+    }
+
+    @media screen and(max-width: 557px) {
+      width: 300px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $main-color;
+      margin: 0;
+    }
+
+    h3 {
+      font-size: 1.58rem;
+      font-weight: 400;
+    }
+
+    p {
+      color: rgb(209, 198, 198);
+      font-size: 1.123rem;
+    }
+  }
+}
