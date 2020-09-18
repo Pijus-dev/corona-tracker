@@ -13,15 +13,18 @@ const FeedOverview = () => {
     );
     const data = await res.json();
     const { articles } = data;
-    console.log(articles);
-    setNews(articles);
+
+    const info = articles.filter(
+      (val, idx, array) => array.findIndex((t) => t.title === val.title) === idx
+    );
+
+    setNews(info);
   };
 
   useEffect(() => {
     fetchNews();
   }, []);
 
-  const removeItem = news.splice(3, 1);
 
   return (
     <div className={styles.feedOverview}>
