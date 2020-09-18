@@ -4,6 +4,8 @@ import { Line, Bar } from "react-chartjs-2";
 import Card from "../card/card";
 import CountrySelector from "../countrySelector/CountrySelector";
 
+import FeedOverview from "../feedOverview/FeedOverview";
+
 import styles from "./homepage.module.scss";
 
 const HomePage = () => {
@@ -51,9 +53,9 @@ const HomePage = () => {
     } else {
       return (
         <Card
-          confirmed={totalInfo.reduce((acc, cull) => acc + cull.confirmed, 0)}
-          recovered={15521145}
-          deaths={totalInfo.reduce((acc, cull) => acc + cull.deaths, 0)}
+          confirmed={30000000}
+          recovered={20000000}
+          deaths={964000}
           lastUpdate={new Date().toString().split(" ").splice(1, 3).join(" ")}
         />
       );
@@ -116,16 +118,18 @@ const HomePage = () => {
               },
             ],
           }}
-          height="190px"
+          height={190}
         />
       );
     }
   };
 
   return (
-    <div>
+    <div className={styles.homepage}>
       <nav className={styles.navbar}>
-        <div className={styles.logo}></div>
+        <a href="#">
+          <div className={styles.logo}></div>
+        </a>
       </nav>
       <div className={styles.background}>
         <CountrySelector countries={nations} handleChange={handleSubmit} />
@@ -134,6 +138,7 @@ const HomePage = () => {
           <div className={styles.chart}>{renderChart()}</div>
         </div>
       </div>
+      <FeedOverview />
     </div>
   );
 };

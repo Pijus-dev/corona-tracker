@@ -2,77 +2,62 @@ $main-color: rgb(212, 209, 209);
 $background-color: #3d496b;
 $sub-color: #455275;
 
-.navbar {
-  height: 95px;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.homepage {
+  min-height: 150vh;
   background-color: $background-color;
 
-  .logo {
-    height: 180px;
-    width: 180px;
-    background-image: url("../img/logo.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-}
+  .navbar {
+    height: 95px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $background-color;
 
-.background {
-  min-height: 95vh;
-  width: 100%;
-  background-color: $background-color;
-  padding-top: 30px;
-  position: relative;
-
-  @media screen and(max-width: 881px) {
-    position: unset;
-    display: block;
-  }
-
-  .chart {
-    position: absolute;
-    left: 30%;
-    top: 24%;
-    width: 65%;
-
-
-    @media screen and(max-width: 1273px) {
-      width: 55%;
-      left: 40%;
+    .logo {
+      height: 180px;
+      width: 180px;
+      background-image: url("../img/logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
+  }
+
+  .background {
+    height: 90vh;
+    width: 100%;
+    padding-top: 30px;
+    position: relative;
 
     @media screen and(max-width: 881px) {
       position: unset;
+      display: block;
     }
 
-    @media screen and(max-width: 881px) {
-      width: 100%;
-      margin-top: 30px;
-    }
+    .chart {
+      position: absolute;
+      left: 30%;
+      top: 24%;
+      width: 65%;
 
-
-    .chartjs-render-monitor {
-      @media screen and(max-width: 557px) {
-        width: 90% !important;
-        height: 450px !important;
+      @media screen and(max-width: 881px) {
+        display: none;
       }
     }
-  }
 
-  .mobile {
-    @media screen and(max-width: 881px) {
-      width: 80%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-    }
+    .mobile {
+      @media screen and(max-width: 881px) {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    @media screen and(max-width: 557px) {
-      width: 65%;
+      @media screen and(max-width: 557px) {
+        width: 65%;
+      }
     }
   }
 }

@@ -1,0 +1,22 @@
+.feedOverview {
+  width: 80%;
+  margin: 50px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  grid-auto-rows: 450px;
+  padding-bottom: 30px;
+
+  @media screen and(max-width: 1097px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and(max-width: 797px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and(max-width: 485px) {
+    grid-template-columns: 1fr;
+  }
+}
+
