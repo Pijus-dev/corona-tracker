@@ -4,7 +4,7 @@ $sub-color: #455275;
 
 .homepage {
   min-height: 150vh;
-  background-color: $background-color;
+  background-color: black;
 
   .navbar {
     height: 95px;
@@ -12,7 +12,7 @@ $sub-color: #455275;
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: $background-color;
+    background-color: black;
 
     .logo {
       height: 180px;
@@ -37,8 +37,14 @@ $sub-color: #455275;
     .chart {
       position: absolute;
       left: 30%;
-      top: 24%;
+      top: 16%;
       width: 65%;
+
+      canvas {
+        background-color: #222426 !important;
+        padding: 10px;
+        border-radius: 5px;
+      }
 
       @media screen and(max-width: 881px) {
         display: none;

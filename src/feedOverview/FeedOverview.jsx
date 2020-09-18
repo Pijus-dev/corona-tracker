@@ -25,30 +25,20 @@ const FeedOverview = () => {
     fetchNews();
   }, []);
 
-
   return (
     <div className={styles.feedOverview}>
-      {news.map(
-        ({ urlToImage, author, description, title, url, publishedAt }, idx) => {
-          const time = new Date(publishedAt)
+      {news
+        .filter(
+          ({ urlToImage }) => urlToImage !== null && urlToImage != "unknown"
+        )
+        .map((props, idx) => {
+          const time = new Date(props.publishedAt)
             .toString()
             .split(" ")
             .splice(1, 3)
             .join(" ");
-          return (
-            <Feed
-              key={idx}
-              image={urlToImage}
-              url={url}
-              author={author}
-              time={time}
-              title={title}
-              description={description}
-              publishedAt={publishedAt}
-            />
-          );
-        }
-      )}
+          return <Feed {...props} key={idx} time={time} />;
+        })}
     </div>
   );
 };
