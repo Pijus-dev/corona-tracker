@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+!!!
+FeedOveriew component does not work in production mode, because free api key is only supported in development...
+
 ## Available Scripts
 
 In the project directory, you can run:

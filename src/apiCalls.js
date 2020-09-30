@@ -42,9 +42,9 @@ export const fetchNews = async () => {
   const data = await res.json();
   const { articles } = data;
 
-  // const info = articles.filter(
-  //   (val, idx, array) => array.findIndex((t) => t.title === val.title) === idx
-  // );
+  const info = articles.filter(
+    (val, idx, array) => array.findIndex((t) => t.title === val.title) === idx
+  );
 
   return articles;
 };
