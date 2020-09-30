@@ -4,6 +4,13 @@ import { Line, Bar } from "react-chartjs-2";
 import Card from "../card/card";
 import CountrySelector from "../countrySelector/CountrySelector";
 
+import {
+  fetchCountries,
+  fetchTotalData,
+  handleSubmit,
+  getTotalNumbers,
+} from "../apiCalls";
+
 import FeedOverview from "../feedOverview/FeedOverview";
 
 import styles from "./homepage.module.scss";
@@ -12,25 +19,32 @@ const HomePage = () => {
   const [nations, setNations] = useState([]);
   const [info, setInfo] = useState([]);
   const [totalInfo, setTotalInfo] = useState([]);
+  const [totalNumber, setTotalNumbers] = useState({});
 
-  const fetchCountries = async () => {
-    const response = await fetch("https://covid19.mathdro.id/api/countries");
-    const data = await response.json();
-    const { countries } = data;
-    setNations(countries);
-  };
-
-  const handleSubmit = async (country) => {
-    const res = await fetch(
-      `https://covid19.mathdro.id/api/countries/${country}`
-    );
-    const data = await res.json();
+  const handleSingleCountryData = async (country) => {
+    const data = await handleSubmit(country);
     setInfo(data);
   };
 
+  const getCountries = async () => {
+    const countries = await fetchCountries();
+    setNations(countries);
+  };
+
+  const getTotalData = async () => {
+    const data = await fetchTotalData();
+    setTotalInfo(data);
+  };
+
+  const getNumbers = async () => {
+    const data = await getTotalNumbers();
+    setTotalNumbers(data);
+  };
+
   useEffect(() => {
-    fetchCountries();
-    fetchTotalData();
+    getCountries();
+    getTotalData();
+    getNumbers();
   }, []);
 
   const { confirmed, recovered, deaths } = info;
@@ -53,29 +67,13 @@ const HomePage = () => {
     } else {
       return (
         <Card
-          confirmed={30000000}
-          recovered={20000000}
-          deaths={964000}
+          confirmed={totalNumber.confirmed ? totalNumber.confirmed.value : null}
+          recovered={totalNumber.recovered ? totalNumber.recovered.value : null}
+          deaths={totalNumber.deaths ? totalNumber.deaths.value : null}
           lastUpdate={new Date().toString().split(" ").splice(1, 3).join(" ")}
         />
       );
     }
-  };
-
-  const fetchTotalData = async () => {
-    const response = await fetch("https://covid19.mathdro.id/api/daily");
-    const data = await response.json();
-
-    const finalData = data.map(
-      ({ confirmed, deaths, recovered, reportDate: date }) => ({
-        confirmed: confirmed.total,
-        deaths: deaths.total,
-        recovered: recovered.total,
-        date,
-      })
-    );
-
-    setTotalInfo(finalData);
   };
 
   const renderChart = () => {
@@ -132,7 +130,10 @@ const HomePage = () => {
         </a>
       </nav>
       <div className={styles.background}>
-        <CountrySelector countries={nations} handleChange={handleSubmit} />
+        <CountrySelector
+          countries={nations}
+          handleChange={handleSingleCountryData}
+        />
         <div className={styles.mobile}>
           {renderData()}
           <div className={styles.chart}>{renderChart()}</div>
