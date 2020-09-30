@@ -34,3 +34,17 @@ export const getTotalNumbers = async () => {
   const data = await res.json();
   return data;
 };
+
+export const fetchNews = async () => {
+  const res = await fetch(
+    "https://newsapi.org/v2/top-headlines?q=covid-19&language=en&sortBy=publishedAt&apiKey=906a42b176b34597b23bc0d302880ece"
+  );
+  const data = await res.json();
+  const { articles } = data;
+
+  // const info = articles.filter(
+  //   (val, idx, array) => array.findIndex((t) => t.title === val.title) === idx
+  // );
+
+  return articles;
+};
