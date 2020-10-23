@@ -21,11 +21,11 @@ const FeedOverview = () => {
   return (
     <div className={styles.feedOverview}>
       {news
-        .filter(
-          ({ urlToImage }) => urlToImage !== null && urlToImage !== "unknown"
-        )
+        // .filter(
+        //   ({ urlToImage }) => urlToImage !== null && urlToImage !== "unknown"
+        // )
         .map((props, idx) => {
-          const time = new Date(props.publishedAt)
+          const time = new Date(props.elabDate)
             .toString()
             .split(" ")
             .splice(1, 3)
