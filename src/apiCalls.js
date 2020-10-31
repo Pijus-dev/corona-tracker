@@ -35,19 +35,6 @@ export const getTotalNumbers = async () => {
   return data;
 };
 
-// export const fetchNews = async () => {
-//   const res = await fetch(
-//     "https://newsapi.org/v2/top-headlines?q=covid-19&language=en&sortBy=publishedAt&apiKey=906a42b176b34597b23bc0d302880ece"
-//   );
-//   const data = await res.json();
-//   const { articles } = data;
-
-//   const info = articles.filter(
-//     (val, idx, array) => array.findIndex((t) => t.title === val.title) === idx
-//   );
-
-//   return articles;
-// };
 export const fetchNews = async () => {
   const res = await fetch(
     "https://rapidapi.p.rapidapi.com/topic-research?limit=20&search=corona&from=2020-09-10&skip=1&langs=en",
@@ -55,7 +42,7 @@ export const fetchNews = async () => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "news67.p.rapidapi.com",
-        "x-rapidapi-key": "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
+        "x-rapidapi-key": `${process.env.REACT_APP_KEY}`,
       },
     }
   );
